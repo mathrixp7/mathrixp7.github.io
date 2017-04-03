@@ -1,423 +1,324 @@
-/* GENERAL */
-	@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville: 300,300italic,400,400italic,700,700italic, 900, 900italic|Montserrat: 300,400,700,900|Raleway: 300,400,700,900|Roboto: 300,400,700,900');
-	* {
-	    	font-family: "Roboto", sans-serif !important;
-	}
-	html, 
-	body {
-		background: #F6F7FB;
-		padding: 0;
-		margin: 0;
-		overflow-x: hidden;
-	}
-	a {
-		text-decoration: none;
-	}
-	.italic {
-		font-family: "Libre Baskerville", serif !important;
-		font-weight: bold;
-	}
-	.dot {
-		font-family: "Montserrat", sans-serif !important;
-		font-style: normal;
-	}
-/* CONTAINER */
-	header {
-		background: #F6F7FB;
-		height: 40px;
-		width: 100%;
-		position: fixed;
-		top: 0px;
-		z-index: 999;
-	}
-	#container {
-		background: #FFF;
-		height: auto;
-		margin: 40px;
-	}
-	footer {
-		background: #F6F7FB;
-		height: 42px;
-		width: 100%;
-		position: fixed;
-		bottom: 0px;
-	}
-	#top {
-		background: #3E4651;
-		border: none;
-		border-radius: 2px;
-		color: white;
-		cursor: pointer;
-		letter-spacing: .5px;
-		outline: none;
-		padding: 10px 20px;
-		text-transform: uppercase;
-		display: none;
-		position: fixed;
-		bottom: 20px;
-		right: 30px;
-		z-index: 99;
-	}
-	#top span {
-		font-family: "Montserrat", sans-serif !important;		
-	}
-	/** NAVBAR **/
-		#navbar {
-			background: #3E4651;
-			height: 35px;
-			line-height: 32px;
-			padding: 10px;
-		}
-		/*** MENU ***/
-			#menu:before {
-				background: no-repeat url("icons/menu.png") left;
-				background-size: 14px auto;
-				color: transparent;
-				content: "dd";
-				padding-right: 5px;
-			}
-			#menu {
-				background: #23B684;
-				color: #FFF;
-				cursor: pointer;
-				font-family: "Montserrat", sans-serif !important;
-				font-size: 10pt !important;
-				font-weight: bold;
-				height: 55px;
-				width: 100px;
-				padding-left: 24px;
-				line-height: 55px;
-				text-transform: uppercase;
-				position: absolute !important;
-				top: 40px !important;
-				left: 40px !important;
-			}
-		/*** NAME ***/
-			#name {
-				width: 100%;
-				text-align: center;
-			}
-			#name span {
-				color: #FFF !important;
-				font-family: "Montserrat", sans-serif !important;
-				font-size: 10pt;
-				font-weight: bold;
-				letter-spacing: 1px;
-				padding-left: 44px;
-				text-transform: uppercase;
-			}
-		/*** THEME ***/
-			#language {
-				width: 200px;
-				height: 53px !important;
-				line-height: 51px !important;
-				text-align: right;
-				position: absolute;
-				top: 40px;
-				right: 54px;
-			}
-			button {
-				background: transparent;
-				border: none;
-				box-shadow: none;
-				color: #FFF;
-				font-family: "Montserrat", sans-serif !important;
-				font-size: 10pt;
-				font-weight: bold;
-				margin-left: -5px;
-			}
-	/** SIDEBAR **/
-		#sidebar {
-			background: #2CC990;
-			height: 450px;
-			width: 250px;
-			margin-left: -250px;
-			float: left;
-			transition: all .5s ease-in-out !important;
-			display: inline-block !important;	
-		}
-		#sidebar li {
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>MATH'RIX P7 -- Association étudiante des filières mathématiques de Paris Diderot</title>
+		<link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			       	function updateClock() {
+					var m = new Date();
+					var dateString = ("0" + m.getHours()).slice(-2) + "`" + ("0" + m.getMinutes()).slice(-2)
+					setTimeout(updateClock, 1000);
+			  	}
+			       	updateClock();
+			      	function updateDate() {
+					var days = ['dimanche','lundi','mardi','mercredi','jeudi.','vendredi','samedi'];
+					var months=['janvier', 'février', 'mars', 'avril', 'mai','juin', 'juillet', 'août','septembre','octobre', 'novembre','décembre'];
+					var m = new Date();
+					var dateString = (days[ m.getDay() ])  + " " +  ("0" + m.getDate()).slice(-2) + " " + (months[ m.getMonth() ])   + " " + m.getFullYear()               
+					document.getElementById('date').innerHTML = dateString;
 
-			box-sizing: border-box;
-			border-color: #16A086;
-			border-style: dotted;
-			border-width: 0px 0px 1px 0px;
-			color: #FFF;
-			cursor: pointer;
-			font-family: "Montserrat", sans-serif !important;
-			font-size: 10.5pt;
-			font-weight: bold;
-			letter-spacing: .5px;
-			line-height: 70px;
-			height: 70px;
-			width: 250px;
-			padding-left: 42px;
-			text-transform: uppercase;
-		}
-		#sidebar li:hover {
-			background: #0F595E;
-			border-left: 8px solid #1BA39C !important;
-			padding-left: 34px;
-		}
-	/** BANNER **/
-		#banner {
-			width: 100%;
-			height: 450px;
-			overflow: hidden !important;
-			white-space: nowrap !important;
-		}
-		#main {
-			background: no-repeat url("background/background12.png") !important;
-        			background-position: left center !important;
-        			background-size: cover  !important;
-			height: 100%;
-			width: 100%;
-			display: inline-block !important;	
-			overflow:hidden !important;
-		}
-		/*** DATE ***/
-			.date {
-				color: #FFF !important;
-				font-size: 30px !important;
-				font-weight: 900 !important;
-				font-family: "Montserrat", sans-serif !important;
-				letter-spacing: 1px;
-				text-transform: uppercase;
-				margin-left: 100px;
-				margin-top: 110px;
-				margin-bottom: -200px;
-			}
-		/*** CATCHPHRASE ***/
-			#message:before {
-				background: no-repeat url("icons/section.png") left bottom;
-				background-size: 80px auto;
-				content: "ddddd";
-				color: transparent;
-				filter: brightness(0) invert(1);
-			}
-			#message  {
-				color: #FFF;
-				font-family: "Montserrat", sans-serif !important;
-				font-size: 33pt;
-				font-weight: 900;
-				width: 90%;
-				height: 200px;
-				text-align: left;
-				margin-left: 100px;
-				margin-top: 180px;
-			}
-			#message .maintitle {
-				font-family: "Raleway", sans-serif !important;
-				font-weight: 900 !important;
-			}
-			#message .subtitle {
-				font-family: "Libre Baskerville", serif !important;
-				font-style: italic;
-				font-weight: 400 !important;
-				margin-top: -40px !important;
-			}
-			#message strong {
-				font-family: "Montserrat", sans-serif !important;
-				font-size: 33pt;	
-				font-style: normal;		
-			}
-	/** CONTENT **/
-		#content {
-			box-sizing: border-box;
-			width: 100%;
-			height: auto !important;
-			padding: 50px;
-		}
-		/*** LEFT BOX ***/
-			#leftbox {
-				border-right: 1px dashed #E7E7E7;
-				height: 100% !important;
-				width: 240px !important;
-				padding: 20px 50px 20px 20px;
-				text-align: left;
-				float: left !important;
-			}
-			/**** SECTION ****/
-				#section {
-					height: 50px;
-					margin-top: -15px;
+					var days2 = ['sunday','monday','tuesday','wenesday','thursday','friday','saturday'];
+					var months2=['january','february','march','april','may','june','july', 'august', 'september', 'october','november','december'];
+					var n = new Date();
+					var dateString = (days2[ n.getDay() ])  + " " +  ("0" + n.getDate()).slice(-2) + " " + (months2[ m.getMonth() ])   + " " + m.getFullYear()               
+					document.getElementById('date2').innerHTML = dateString;
+			   	}
+			       	updateDate();
+			});
+			$(function() {
+	  			$('#menu').hover(function() {
+	    				$('#sidebar').css('margin-left', '0px');
+	 			}, function() {
+	    				$('#sidebar').css('margin-left', '-250px');
+	  			});
+			});
+			$(function() {
+	  			$('#sidebar').hover(function() {
+	    				$('#sidebar').css('margin-left', '0px');
+	 			}, function() {
+	    				$('#sidebar').css('margin-left', '-250px');
+	  			});
+			});
+			$(document).ready(function() {
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100) {
+						$('#top').fadeIn();
+					} else {
+						$('#top').fadeOut();
+					}
+				});
+				
+				$('#top').click(function(){
+					$('html, body').animate({scrollTop : 0},800);
+					return false;
+				});
+			});
+			$(document).ready(function() {
+				var langStored = localStorage.getItem("language");
+				if(langStored=='french'){
+					$('[lang="en"]').hide();
+			  		$('[lang="fr"]').show();
 				}
-				#section h1 {
-					color: #3C3741 !important;
-					font-family: "Montserrat", sans-serif !important;
-					font-size: 16pt;
-					font-weight: bold;
-					letter-spacing: -.5px;
-					text-transform: uppercase;
+				else if(langStored=='english') {
+					$('[lang="fr"]').hide();
+			  		$(langStored).show();
 				}
-			/**** INFOBOX ****/
-				.infobox {
-					background: #F6F7FB;
-					border: 1px solid #E7E7E7;
-					height: auto;
-					width: 95%;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: normal;
-					margin-bottom: 50px;
+				else if(langStored==null) {
+					$('[lang="en"]').hide();
+			  		$('[lang="fr"]').show();					
 				}
-				#avatar {
-					border-bottom: 1px solid #E7E7E7;
-					height: auto;
-					width: 100%;
-				}
-				.description {
-					color: #557780;
-					font-style: italic;
-					font-size: 12pt;
-					padding: 25px !important;
-					margin-top: -23px;
-					overflow: hidden;
-				}
-				.circle {
-					border-radius: 50%;
-					color: transparent;
-					width: 10px;
-					height: 10px;
-				}
-				#creator .circle {
-					background: #F8BD97;
-				}
-				#association .circle {
-					background: #DED7E6;
-				}
-				#circle1 {
-					float: left;
-					margin-top: -20px;
-					margin-bottom: 10px;
-					margin-left: 10px;
-				}
-				#circle2 {
-					border-radius: 50%;
-					color: transparent;
-					width: 10px;
-					height: 10px;
-					float: right;	
-					margin-top: -20px;
-					margin-bottom: 10px;
-					margin-right: 10px;
-				}
-			/*** SOCIAL ***/
-				#social {
-					height: 200px;
-					width: 83%;
-					float: left;
-					margin-top: -20px;
-				}
-				#social .links {
-					border-style: solid;
-					border-width: 1px 1px !important;
-					color: #FFF;
-					cursor: pointer;
-					font-family: "Montserrat", sans-serif !important;
-					font-size: 10.5pt;
-					font-weight: bold;
-					letter-spacing: .5px;
-					line-height: 20px;					
-					height: 20px;
-					width: 100% !important;
-					padding: 15px;
-					text-transform: uppercase;
-					margin-bottom: 20px;
-				}
-				#social .icon {
-					width: 50px;
-					height: 50px;
-					float: left;
-					margin-left: -15px;
-					margin-top: -15px;
-					margin-right: 20px;
-				}
-				#social #facebook {
-					background: #3D8EB9;
-					border-color: #00587A;
-				}
-				#social #facebook .icon {
-					background-color: #005F97 !important;
-					background: no-repeat url("icons/facebook.png") center;
-					background-size: 22px auto;
-					border-right: 1px solid #00587A;
-				}
-				#social #twitter {
-					background: #10D2E5;
-					border-color: #27a6cc;
-				}
-				#social #twitter .icon {
-					background-color: #26bbe7 !important;
-					background: no-repeat url("icons/twitter.png") center;
-					background-size: 21px auto;
-					border-right: 1px solid #27a6cc;
-				}
-				#social #mail {
-					background: #EF5C54;
-					border-color: #9E373B;
-				}
-				#social #mail .icon {
-					background-color: #C82647 !important;
-					background: no-repeat url("icons/mail.png") center;
-					background-size: 25px auto;
-					border-right: 1px solid #9E373B
-				}
-			/*** SEPARATOR ***/
-				.separator {
-					border-color: #EBEBEB;
-					border-style: dashed;
-					border-width: 1px 0px 0px 0px;
-					box-shadow: none !important;
-					color: #FFF;
-					float: left;
-					width: 230px;
-					margin-top: -25px;
-				}
-		/*** RIGHT BOX ***/
-			#rightbox {
-				background: transparent;
-				height: 100% !important;
-				width: 58%;
-				margin-top: 60px;
-				margin-left: 370px;
-				margin-right: 100px;
-			}
-			/**** TITLE ****/
-				.title {
-					font-size: 25pt;
-				}
-				.title .subject {
-					color: #2CC990;
-					font-family: "Raleway", sans-serif !important;
-					font-weight: 900;
-					text-shadow: 3px 3px #EBEBEB;
-				}
-				.title .time {
-					color: #D4D4D4;
-					font-size: 11pt;
-					font-weight: 900;
-					letter-spacing: .5px;
-					text-transform: uppercase;
-					margin-top: -32px;
-					margin-left: 1px;
-				}
-			/**** ARTICLE ****/
-				.article {
-					border-bottom: 1px dashed #EBEBEB;
-					padding-bottom: 35px;
-				}
-				.article:last-child {
-					border: none;
-				}
-				.tags:before {
-					content: " #";
-				}
-				.tags {
-					background: #66CC99;
-					border-radius: 2px;
-					font-style: italic;
-					display: inline-block;
-					margin-right: 10px;
-					padding: 10px 15px;
-				}
+				$('#switch_fr').click(function() {
+					$('[lang="fr"]').show();
+					$('[lang="en"]').hide();
+					var selectedLanguage='french';
+					localStorage.setItem("language", selectedLanguage); 
+				});
+				$('#switch_en').click(function() {
+					$('[lang="en"]').show();
+					$('[lang="fr"]').hide();
+					var selectedLanguage='english';
+					localStorage.setItem("language", selectedLanguage); 
+				});
+			});
+	             </script>
+	</head>
+	<body>
+		<header></header>
+		<div id="container">
+			<div id="navbar">
+				<div id="menu">Menu</div>
+				<div lang="fr" id="name"> <span> Math'rix P.7 × Page d'accueil</span></div>
+				<div lang="en" id="name"> <span> Math'rix P.7 × Home page</span></div>
+				<div id="language">
+					<button class="switch" id="switch_en">EN.</button>
+					<button class="switch" id="switch_fr">FR.</button>
+				</div>
+			</div>
+			<div id="banner">
+				<div id="sidebar">
+					<li lang="fr">Catégories</li>
+					<li lang="en">Categories</li>
+					<li lang="fr">Projets</li>
+					<li lang="en">Projects</li>
+					<li lang="fr">Documents</li>
+					<li lang="en">Documents</li>
+					<li lang="fr" id="propos">à propos</li>
+					<li lang="en" id="propos">about us</li>
+				</div>
+				<div id="main">
+					<div lang="fr" class="date" id="date"></div>
+					<div lang="en" class="date" id="date2"></div>
+					<div id="message">	
+						<p lang="fr" class="maintitle">Suivez toute l'actualité</p>
+						<p lang="en" class="maintitle">Follow all the news</p>
+						<p lang="fr" class="subtitle">de l'association Math'rix P7<i class="dot">.</i></p>
+						<p lang="en" class="subtitle">of the association Math'rix P7<i class="dot">.</i></p>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div id="leftbox">
+					<div id="section">
+						<h1>Informations.</h1>
+					</div>
+					<div class="infobox" id="creator">
+						<img src="avatar/avatar01.png" id="avatar">
+						<div lang="fr" class="description">
+							<p>Dang Benjamin, actuel secrétaire de l'association et créateur de ce site.
+							</p>
+							<p>Adore les chats, lire des romans de science-fiction et policiers, regarder des films et séries, et tout ce qui concerne le web design.</p>
+						</div>
+						<div lang="en" class="description">
+							<p>Dang Benjamin, secretary of the association and creator of this website.
+							</p>
+							<p>Love cats, reading scifi and detective novels, watching series and movies, and stuff related to web design.</p>
+						</div>
+						<div class="circle" id="circle1">d</div>
+						<div class="circle" id="circle2">d</div>
+					</div>
+					<hr class="separator">
+					<div class="infobox" id="association">
+						<img src="avatar/avatar02.png" id="avatar">
+						<div lang="fr" class="description">
+							<p>Créée en 2013, l'association des filières mathématiciennes de l'université Paris Diderot a pour but de créer un esprit de cohésion entre les étudiant.e.s en maths, mais également ceux d’autres filières de l’université.</p>
+							<p>Pour cela, elle propose des projets scolaires, culturels et événementiels.
+							</p>
+						</div>
+						<div lang="en" class="description">
+							<p>Created in 2013, the association of students of mathematics' courses of the University Paris Diderot aims to create a spirit of cohesion between the students in mathematics, but also between the others students with different options of the university. </p>
+							<p>To achieve this goal, the association proposes college, cultural and even-driven projects.
+							</p>
+						</div>
+						<div class="circle" id="circle1">d</div>
+						<div class="circle" id="circle2">d</div>
+					</div>
+					<div id="social">
+						<a href="https://www.facebook.com/mathrixp7/?fref=ts">
+							<div class="links" id="facebook">
+								<div class="icon"></div>
+								Facebook
+							</div>
+						</a>
+						<a href="https://twitter.com/MathRixP7">
+							<div class="links" id="twitter">
+								<div class="icon"></div>
+								Twitter
+							</div>
+						</a>
+						<a href="mailto:mathrix.paris7@gmail.com">
+							<div class="links" id="mail">
+								<div class="icon"></div>
+								Mail
+							</div>
+						</a>
+					</div>
+				</div>
+				<div id="rightbox">
+					<div lang="fr" class="article">
+						<div class="title">
+							<h3 lang="fr" class="subject">Parrainage à <i class="italic">Math'rix P7</i><i class="dot">.</i></h3>
+							<h2 lang="fr" class="time">dimanche 18 septembre 2016, 14h00</h2>
+						</div>
+						<div class="text">
+							<p>Vous faites partis de la 2e édition du parrainage à la Math'Rix et soyez en fiers, vous allez pouvoir profiter d'une expérience aussi belle qu'enrichissante, le parrainage vous accompagnera toute l'année sur divers projets pleins de surprises !
+							Accrochez-vous bien car tout commence vendredi soir sur l'esplanade : nous vous donnons rendez-vous à 18h vendredi devant la Halle aux Farines sur l'esplanade, et à partir de ce moment là les choses intéressantes commencent ... </p>
+
+							<p>Nous demandons à tous les parrains et marraines de venir avec un objet qui leur "ressemble" comme par exemple un livre, une peluche, ton bouquin de maths, un mug personnalisé ... n'importe quoi tant que ça te plait et te ressemble ! </p>
+
+							<p> Ainsi vendredi soir, une fois arrivé sur l'esplanade, chaque parrains et marraines déposera son objet. Et c'est à CE moment que les filleuls et filleules rentrent dans le jeu ! Vous aurez alors tous les objets étalés sous vos yeux et chacun ira en choisir un sans savoir à qui il apparitient; les binômes seront formés ! Les réjouissances ne s'arrêtent cependant pas là ! Math'Rix organise son premier Afterwork réservé aux étudiants du parrainage et vous êtes tous les bienvenus ! Pour ceux qui souhaiteraient se joindre à la fête, un départ vers le bar est mis en place de l'esplanade à 19h en compagnie des membres de la plus cool des assos de Paris 7.</p>
+
+							<p>A présent vous savez tout, on compte sur votre présence vendredi soir !</p>
+
+							<p> PS : ajoute Matt Rix sur Facebook pour être tenu au courant de tous l'actualité du parrainage !</p>
+
+							<p class="tags">OserasTuRentrerDansLaMatrice </p>
+
+							<p class="tags">LaMafiaMathématicienne</p>
+						</div>
+					</div>
+					<div lang="en" class="article">
+						<div class="title">
+							<h3 class="subject">Mentoring at <i class="italic">Math'rix P7</i><i class="dot">.</i></h3>
+							<h2 class="time">sunday, 18 september 2016, 02:00 pm</h2>
+						</div>
+						<div class="text">
+							<p>Vous faites partis de la 2e édition du parrainage à la Math'Rix et soyez en fiers, vous allez pouvoir profiter d'une expérience aussi belle qu'enrichissante, le parrainage vous accompagnera toute l'année sur divers projets pleins de surprises !
+							Accrochez-vous bien car tout commence vendredi soir sur l'esplanade : nous vous donnons rendez-vous à 18h vendredi devant la Halle aux Farines sur l'esplanade, et à partir de ce moment là les choses intéressantes commencent ... </p>
+
+							<p>Nous demandons à tous les parrains et marraines de venir avec un objet qui leur "ressemble" comme par exemple un livre, une peluche, ton bouquin de maths, un mug personnalisé ... n'importe quoi tant que ça te plait et te ressemble ! </p>
+
+							<p> Ainsi vendredi soir, une fois arrivé sur l'esplanade, chaque parrains et marraines déposera son objet. Et c'est à CE moment que les filleuls et filleules rentrent dans le jeu ! Vous aurez alors tous les objets étalés sous vos yeux et chacun ira en choisir un sans savoir à qui il apparitient; les binômes seront formés ! Les réjouissances ne s'arrêtent cependant pas là ! Math'Rix organise son premier Afterwork réservé aux étudiants du parrainage et vous êtes tous les bienvenus ! Pour ceux qui souhaiteraient se joindre à la fête, un départ vers le bar est mis en place de l'esplanade à 19h en compagnie des membres de la plus cool des assos de Paris 7.</p>
+
+							<p>A présent vous savez tout, on compte sur votre présence vendredi soir !</p>
+
+							<p> PS : ajoute Matt Rix sur Facebook pour être tenu au courant de tous l'actualité du parrainage !</p>
+
+							<p class="tags">OserasTuRentrerDansLaMatrice </p>
+
+							<p class="tags">LaMafiaMathématicienne</p>
+						</div>
+					</div>
+					<div lang="fr" class="article">
+						<div class="title">
+							<h3 class="subject">Dates de <i class="italic">rentrée</i><i class="dot">.</i></h3>
+							<h2 class="time">mardi 30 août 2016, 11h16</h2>
+						</div>
+
+						<div class="text">
+							<p>Chers étudiants matheux la rentrée n'est plus que dans quelques jours et il est temps de se préparer (c'est dur mais nous on est heureux de tous vous retrouver !). Ne manquez pas la date de votre pré-rentrée :  </p>
+
+							<p>L1 mathématiques : jeudi 1er septembre de 10h à 12h dans l'amphi 10E</p>
+
+							<p>L2 mathématiques : jeudi 1er septembre de 14h à 16h dans l'amphi 10E</p>
+
+							<p>L3 mathématiques : vendredi 9 septembre à 14h en 255 à Olympe de Gouges</p>
+
+							<p>L1 Math-Info : vendredi 2 septembre de 10h à 12h en 12E</p>
+
+							<p>L2 Math-Info : vendredi 2 septembre de 14h à 16h en 9E</p>
+
+							<p>L3 Math-Info : vendredi 9 septembre à 14h</p>
+
+							<p>L1 Miashs : vendredi 2 septembre de 10h à 12h en 5C</p>
+
+							<p>L2 Miashs : vendredi 2 septembre de 14h à 16h en 5C</p>
+
+							<p>L3 Miashs : lundi 12 septembre à 16h15 en 1021 à Sophie Germain</p>
+
+							<p> Bon courage à tous !  </p>
+						</div>
+					</div>
+					<div lang="en" class="article">
+						<div class="title">
+							<h3 class="subject">Beginning of <i class="italic">courses</i><i class="dot">.</i></h3>
+							<h2 class="time">tuesday, 30 august 2016, 11:16 am</h2>
+						</div>
+
+						<div class="text">
+							<p>Chers étudiants matheux la rentrée n'est plus que dans quelques jours et il est temps de se préparer (c'est dur mais nous on est heureux de tous vous retrouver !). Ne manquez pas la date de votre pré-rentrée :  </p>
+
+							<p>L1 mathématiques : jeudi 1er septembre de 10h à 12h dans l'amphi 10E</p>
+
+							<p>L2 mathématiques : jeudi 1er septembre de 14h à 16h dans l'amphi 10E</p>
+
+							<p>L3 mathématiques : vendredi 9 septembre à 14h en 255 à Olympe de Gouges</p>
+
+							<p>L1 Math-Info : vendredi 2 septembre de 10h à 12h en 12E</p>
+
+							<p>L2 Math-Info : vendredi 2 septembre de 14h à 16h en 9E</p>
+
+							<p>L3 Math-Info : vendredi 9 septembre à 14h</p>
+
+							<p>L1 Miashs : vendredi 2 septembre de 10h à 12h en 5C</p>
+
+							<p>L2 Miashs : vendredi 2 septembre de 14h à 16h en 5C</p>
+
+							<p>L3 Miashs : lundi 12 septembre à 16h15 en 1021 à Sophie Germain</p>
+
+							<p> Bon courage à tous !  </p>
+						</div>
+					</div>
+					<div lang="fr" class="article">
+						<div class="title">
+							<h3 class="subject">Adopte un <i class="italic">L1</i><i class="dot">.</i></h3>
+							<h2 class="time">samedi 09 avril 2016, 22h43</h2>
+						</div>
+
+						<div class="text">
+							<p>Math'Rix lance sa grande campagne "AdopteUnL1.com" !
+							Toi qui as connu les méandres de l'Université, toi qui connais les trucs et astuces de ta filière, toi qui sais comment aller aux Halls B et F, nous avons besoin de toi.</p>
+
+							<p>Peu importe que tu sois en Math, Math-Info ou Miashs, l'important est que tu sois motivé pour parrainer un futur L1 et l'accompagner durant un temps. Selon les attentes de chacun, le parrainage s'adaptera et fera vivre des projets divers !  </p>
+
+							<p> Toutes les infos sont sur le formulaire : <a href="https://docs.google.com/forms/d/e/1FAIpQLSdg1iJbx9qabUl9jgWO_HSujYkaxhNxeFILnwmp70dJSg8IBA/viewform">http://mathrix.nexgate.ch/AdopteUnL1</a></p>
+						</div>
+					</div>
+					<div lang="en" class="article">
+						<div class="title">
+							<h3 class="subject">Adopt a <i class="italic">L1</i><i class="dot">.</i></h3>
+							<h2 class="time">saturday, 09 april 2016, 08:43 pm</h2>
+						</div>
+
+						<div class="text">
+							<p>Math'Rix lance sa grande campagne "AdopteUnL1.com" !
+							Toi qui as connu les méandres de l'Université, toi qui connais les trucs et astuces de ta filière, toi qui sais comment aller aux Halls B et F, nous avons besoin de toi.</p>
+
+							<p>Peu importe que tu sois en Math, Math-Info ou Miashs, l'important est que tu sois motivé pour parrainer un futur L1 et l'accompagner durant un temps. Selon les attentes de chacun, le parrainage s'adaptera et fera vivre des projets divers !  </p>
+
+							<p> Toutes les infos sont sur le formulaire : <a href="https://docs.google.com/forms/d/e/1FAIpQLSdg1iJbx9qabUl9jgWO_HSujYkaxhNxeFILnwmp70dJSg8IBA/viewform">http://mathrix.nexgate.ch/AdopteUnL1</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button onclick="topFunction()" id="top" title="Go to top">
+			<span lang="en">Top</span>
+			<span lang="fr">Haut</span>
+		</button>
+		<footer></footer>
+	</body>
+</html>
