@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -8,20 +8,26 @@
 		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
-			       function updateClock() {
-			                var m = new Date();
-			                var dateString = ("0" + m.getHours()).slice(-2) + "`" + ("0" + m.getMinutes()).slice(-2)
-			                setTimeout(updateClock, 1000);
-			       }
-			       updateClock();
-			       function updateDate() {
-			      var days = ['dimanche','lundi','mardi','mercredi','jeudi.','vendredi','samedi'];
-			      var months=['janvier', 'février', 'mars', 'avril', 'mai','juin', 'juillet', 'août','septembre','octobre', 'novembre','décembre'];
-			      var m = new Date();
-			      var dateString = (days[ m.getDay() ])  + " " +  ("0" + m.getDate()).slice(-2) + " " + (months[ m.getMonth() ])   + " " + m.getFullYear()               
-			                document.getElementById('date').innerHTML = dateString;
-			       }
-			       updateDate();
+			       	function updateClock() {
+					var m = new Date();
+					var dateString = ("0" + m.getHours()).slice(-2) + "`" + ("0" + m.getMinutes()).slice(-2)
+					setTimeout(updateClock, 1000);
+			  	}
+			       	updateClock();
+			      	function updateDate() {
+					var days = ['dimanche','lundi','mardi','mercredi','jeudi.','vendredi','samedi'];
+					var months=['janvier', 'février', 'mars', 'avril', 'mai','juin', 'juillet', 'août','septembre','octobre', 'novembre','décembre'];
+					var m = new Date();
+					var dateString = (days[ m.getDay() ])  + " " +  ("0" + m.getDate()).slice(-2) + " " + (months[ m.getMonth() ])   + " " + m.getFullYear()               
+					document.getElementById('date').innerHTML = dateString;
+
+					var days2 = ['sunday','monday','tuesday','wenesday','thursday','friday','saturday'];
+					var months2=['january','february','march','april','may','june','july', 'august', 'september', 'october','november','december'];
+					var n = new Date();
+					var dateString = (days2[ n.getDay() ])  + " " +  ("0" + n.getDate()).slice(-2) + " " + (months2[ m.getMonth() ])   + " " + m.getFullYear()               
+					document.getElementById('date2').innerHTML = dateString;
+			   	}
+			       	updateDate();
 			});
 			$(function() {
 	  			$('#menu').hover(function() {
@@ -51,6 +57,29 @@
 					return false;
 				});
 			});
+			$(document).ready(function() {
+				var langStored = localStorage.getItem("language");
+				if(langStored=='french'){
+					$('[lang="en"]').hide();
+			  		$('[lang="fr"]').show();
+				}
+				else if(langStored=='english') {
+					$('[lang="fr"]').hide();
+			  		$(langStored).show();
+				}
+				$('#switch_fr').click(function() {
+					$('[lang="fr"]').show();
+					$('[lang="en"]').hide();
+					var selectedLanguage='french';
+					localStorage.setItem("language", selectedLanguage); 
+				});
+				$('#switch_en').click(function() {
+					$('[lang="en"]').show();
+					$('[lang="fr"]').hide();
+					var selectedLanguage='english';
+					localStorage.setItem("language", selectedLanguage); 
+				});
+			});
 	             </script>
 	</head>
 	<body>
@@ -58,24 +87,32 @@
 		<div id="container">
 			<div id="navbar">
 				<div id="menu">Menu</div>
-				<div id="name"> <span> Math'rix P.7 × Page d'accueil</span></div>
+				<div lang="fr" id="name"> <span> Math'rix P.7 × Page d'accueil</span></div>
+				<div lang="en" id="name"> <span> Math'rix P.7 × Home page</span></div>
 				<div id="language">
-					<button>EN.</button>
-					<button>FR.</button>
+					<button class="switch" id="switch_en">EN.</button>
+					<button class="switch" id="switch_fr">FR.</button>
 				</div>
 			</div>
 			<div id="banner">
 				<div id="sidebar">
-					<li>Catégories</li>
-					<li>Projets</li>
-					<li>Documents</li>
-					<li id="propos">à propos</li>
+					<li lang="fr">Catégories</li>
+					<li lang="en">Categories</li>
+					<li lang="fr">Projets</li>
+					<li lang="en">Projects</li>
+					<li lang="fr">Documents</li>
+					<li lang="en">Documents</li>
+					<li lang="fr" id="propos">à propos</li>
+					<li lang="en" id="propos">about us</li>
 				</div>
 				<div id="main">
-					<div id="date"></div>
+					<div lang="fr" class="date" id="date"></div>
+					<div lang="en" class="date" id="date2"></div>
 					<div id="message">	
-						<p class="maintitle">Suivez toute l'actualité</p>
-						<p class="subtitle">de l'association Math'rix P7<i class="dot">.</i></p>
+						<p lang="fr" class="maintitle">Suivez toute l'actualité</p>
+						<p lang="en" class="maintitle">Follow all the news</p>
+						<p lang="fr" class="subtitle">de l'association Math'rix P7<i class="dot">.</i></p>
+						<p lang="en" class="subtitle">of the association Math'rix P7<i class="dot">.</i></p>
 					</div>
 				</div>
 			</div>
@@ -86,10 +123,15 @@
 					</div>
 					<div class="infobox" id="creator">
 						<img src="avatar/avatar01.png" id="avatar">
-						<div class="description">
+						<div lang="fr" class="description">
 							<p>Dang Benjamin, actuel secrétaire de l'association et créateur de ce site.
 							</p>
 							<p>Adore les chats, lire des romans de science-fiction et policiers, regarder des films et séries, et tout ce qui concerne le web design.</p>
+						</div>
+						<div lang="en" class="description">
+							<p>Dang Benjamin, secretary of the association and creator of this website.
+							</p>
+							<p>Love cats, reading scifi and detective novels, watching series and movies, and stuff related to web design.</p>
 						</div>
 						<div class="circle" id="circle1">d</div>
 						<div class="circle" id="circle2">d</div>
@@ -97,9 +139,14 @@
 					<hr class="separator">
 					<div class="infobox" id="association">
 						<img src="avatar/avatar02.png" id="avatar">
-						<div class="description">
+						<div lang="fr" class="description">
 							<p>Créée en 2013, l'association des filières mathématiciennes de l'université Paris Diderot a pour but de créer un esprit de cohésion entre les étudiant.e.s en maths, mais également ceux d’autres filières de l’université.</p>
 							<p>Pour cela, elle propose des projets scolaires, culturels et événementiels.
+							</p>
+						</div>
+						<div lang="en" class="description">
+							<p>Created in 2013, the association of students of mathematics' courses of the University Paris Diderot aims to create a spirit of cohesion between the students in mathematics, but also between the others students with different options of the university. </p>
+							<p>To achieve this goal, the association proposes college, cultural and even-driven projects.
 							</p>
 						</div>
 						<div class="circle" id="circle1">d</div>
@@ -127,12 +174,11 @@
 					</div>
 				</div>
 				<div id="rightbox">
-					<div class="article">
+					<div lang="fr" class="article">
 						<div class="title">
-							<h3 class="subject">Parrainage à <i class="italic">Math'rix P7</i><i class="dot">.</i></h3>
-							<h2 class="time">dimanche 18 septembre 2016, 14h00</h2>
+							<h3 lang="fr" class="subject">Parrainage à <i class="italic">Math'rix P7</i><i class="dot">.</i></h3>
+							<h2 lang="fr" class="time">dimanche 18 septembre 2016, 14h00</h2>
 						</div>
-
 						<div class="text">
 							<p>Vous faites partis de la 2e édition du parrainage à la Math'Rix et soyez en fiers, vous allez pouvoir profiter d'une expérience aussi belle qu'enrichissante, le parrainage vous accompagnera toute l'année sur divers projets pleins de surprises !
 							Accrochez-vous bien car tout commence vendredi soir sur l'esplanade : nous vous donnons rendez-vous à 18h vendredi devant la Halle aux Farines sur l'esplanade, et à partir de ce moment là les choses intéressantes commencent ... </p>
@@ -150,7 +196,29 @@
 							<p class="tags">LaMafiaMathématicienne</p>
 						</div>
 					</div>
-					<div class="article">
+					<div lang="en" class="article">
+						<div class="title">
+							<h3 class="subject">Mentoring at <i class="italic">Math'rix P7</i><i class="dot">.</i></h3>
+							<h2 class="time">sunday, 18 september 2016, 02:00 pm</h2>
+						</div>
+						<div class="text">
+							<p>Vous faites partis de la 2e édition du parrainage à la Math'Rix et soyez en fiers, vous allez pouvoir profiter d'une expérience aussi belle qu'enrichissante, le parrainage vous accompagnera toute l'année sur divers projets pleins de surprises !
+							Accrochez-vous bien car tout commence vendredi soir sur l'esplanade : nous vous donnons rendez-vous à 18h vendredi devant la Halle aux Farines sur l'esplanade, et à partir de ce moment là les choses intéressantes commencent ... </p>
+
+							<p>Nous demandons à tous les parrains et marraines de venir avec un objet qui leur "ressemble" comme par exemple un livre, une peluche, ton bouquin de maths, un mug personnalisé ... n'importe quoi tant que ça te plait et te ressemble ! </p>
+
+							<p> Ainsi vendredi soir, une fois arrivé sur l'esplanade, chaque parrains et marraines déposera son objet. Et c'est à CE moment que les filleuls et filleules rentrent dans le jeu ! Vous aurez alors tous les objets étalés sous vos yeux et chacun ira en choisir un sans savoir à qui il apparitient; les binômes seront formés ! Les réjouissances ne s'arrêtent cependant pas là ! Math'Rix organise son premier Afterwork réservé aux étudiants du parrainage et vous êtes tous les bienvenus ! Pour ceux qui souhaiteraient se joindre à la fête, un départ vers le bar est mis en place de l'esplanade à 19h en compagnie des membres de la plus cool des assos de Paris 7.</p>
+
+							<p>A présent vous savez tout, on compte sur votre présence vendredi soir !</p>
+
+							<p> PS : ajoute Matt Rix sur Facebook pour être tenu au courant de tous l'actualité du parrainage !</p>
+
+							<p class="tags">OserasTuRentrerDansLaMatrice </p>
+
+							<p class="tags">LaMafiaMathématicienne</p>
+						</div>
+					</div>
+					<div lang="fr" class="article">
 						<div class="title">
 							<h3 class="subject">Dates de <i class="italic">rentrée</i><i class="dot">.</i></h3>
 							<h2 class="time">mardi 30 août 2016, 11h16</h2>
@@ -180,7 +248,37 @@
 							<p> Bon courage à tous !  </p>
 						</div>
 					</div>
-					<div class="article">
+					<div lang="en" class="article">
+						<div class="title">
+							<h3 class="subject">Beginning of <i class="italic">courses</i><i class="dot">.</i></h3>
+							<h2 class="time">tuesday, 30 august 2016, 11:16 am</h2>
+						</div>
+
+						<div class="text">
+							<p>Chers étudiants matheux la rentrée n'est plus que dans quelques jours et il est temps de se préparer (c'est dur mais nous on est heureux de tous vous retrouver !). Ne manquez pas la date de votre pré-rentrée :  </p>
+
+							<p>L1 mathématiques : jeudi 1er septembre de 10h à 12h dans l'amphi 10E</p>
+
+							<p>L2 mathématiques : jeudi 1er septembre de 14h à 16h dans l'amphi 10E</p>
+
+							<p>L3 mathématiques : vendredi 9 septembre à 14h en 255 à Olympe de Gouges</p>
+
+							<p>L1 Math-Info : vendredi 2 septembre de 10h à 12h en 12E</p>
+
+							<p>L2 Math-Info : vendredi 2 septembre de 14h à 16h en 9E</p>
+
+							<p>L3 Math-Info : vendredi 9 septembre à 14h</p>
+
+							<p>L1 Miashs : vendredi 2 septembre de 10h à 12h en 5C</p>
+
+							<p>L2 Miashs : vendredi 2 septembre de 14h à 16h en 5C</p>
+
+							<p>L3 Miashs : lundi 12 septembre à 16h15 en 1021 à Sophie Germain</p>
+
+							<p> Bon courage à tous !  </p>
+						</div>
+					</div>
+					<div lang="fr" class="article">
 						<div class="title">
 							<h3 class="subject">Adopte un <i class="italic">L1</i><i class="dot">.</i></h3>
 							<h2 class="time">samedi 09 avril 2016, 22h43</h2>
@@ -195,10 +293,28 @@
 							<p> Toutes les infos sont sur le formulaire : <a href="https://docs.google.com/forms/d/e/1FAIpQLSdg1iJbx9qabUl9jgWO_HSujYkaxhNxeFILnwmp70dJSg8IBA/viewform">http://mathrix.nexgate.ch/AdopteUnL1</a></p>
 						</div>
 					</div>
+					<div lang="en" class="article">
+						<div class="title">
+							<h3 class="subject">Adopt a <i class="italic">L1</i><i class="dot">.</i></h3>
+							<h2 class="time">saturday, 09 april 2016, 08:43 pm</h2>
+						</div>
+
+						<div class="text">
+							<p>Math'Rix lance sa grande campagne "AdopteUnL1.com" !
+							Toi qui as connu les méandres de l'Université, toi qui connais les trucs et astuces de ta filière, toi qui sais comment aller aux Halls B et F, nous avons besoin de toi.</p>
+
+							<p>Peu importe que tu sois en Math, Math-Info ou Miashs, l'important est que tu sois motivé pour parrainer un futur L1 et l'accompagner durant un temps. Selon les attentes de chacun, le parrainage s'adaptera et fera vivre des projets divers !  </p>
+
+							<p> Toutes les infos sont sur le formulaire : <a href="https://docs.google.com/forms/d/e/1FAIpQLSdg1iJbx9qabUl9jgWO_HSujYkaxhNxeFILnwmp70dJSg8IBA/viewform">http://mathrix.nexgate.ch/AdopteUnL1</a></p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<button onclick="topFunction()" id="top" title="Go to top">Top</button>
+		<button onclick="topFunction()" id="top" title="Go to top">
+			<span lang="en">Top</span>
+			<span lang="fr">Haut</span>
+		</button>
 		<footer></footer>
 	</body>
 </html>
