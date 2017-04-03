@@ -67,6 +67,10 @@
 					$('[lang="fr"]').hide();
 			  		$(langStored).show();
 				}
+				else if(langStored=='null') {
+					$('[lang="en"]').hide();
+			  		$('[lang="fr"]').show();					
+				}
 				$('#switch_fr').click(function() {
 					$('[lang="fr"]').show();
 					$('[lang="en"]').hide();
