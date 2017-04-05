@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Math'Rix P7 -- Association étudiante des filières mathématiques de Paris Diderot</title>
+		<link rel="shortcut icon" type="image/png" href="icons/favicon1.png"/>
+		<link rel="stylesheet" type="text/css" href="style_about.css">
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			       	function updateClock() {
+					var m = new Date();
+					var dateString = ("0" + m.getHours()).slice(-2) + "`" + ("0" + m.getMinutes()).slice(-2)
+					setTimeout(updateClock, 1000);
+			  	}
+			       	updateClock();
+			      	function updateDate() {
+					var days = ['dimanche','lundi','mardi','mercredi','jeudi.','vendredi','samedi'];
+					var months=['janvier', 'février', 'mars', 'avril', 'mai','juin', 'juillet', 'août','septembre','octobre', 'novembre','décembre'];
+					var m = new Date();
+					var dateString = (days[ m.getDay() ])  + " " +  ("0" + m.getDate()).slice(-2) + " " + (months[ m.getMonth() ])   + " " + m.getFullYear()               
+					document.getElementById('date').innerHTML = dateString;
+
+					var days2 = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+					var months2=['january','february','march','april','may','june','july', 'august', 'september', 'october','november','december'];
+					var n = new Date();
+					var dateString = (days2[ n.getDay() ])  + " " +  ("0" + n.getDate()).slice(-2) + " " + (months2[ m.getMonth() ])   + " " + m.getFullYear()               
+					document.getElementById('date2').innerHTML = dateString;
+			   	}
+			       	updateDate();
+			});
+			$(function() {
+	  			$('#menu').hover(function() {
+	    				$('#sidebar').css('margin-left', '0px');
+	 			}, function() {
+	    				$('#sidebar').css('margin-left', '-250px');
+	  			});
+			});
+			$(function() {
+	  			$('#sidebar').hover(function() {
+	    				$('#sidebar').css('margin-left', '0px');
+	 			}, function() {
+	    				$('#sidebar').css('margin-left', '-250px');
+	  			});
+			});
+			$(document).ready(function() {
+				$(window).scroll(function(){
+					if ($(this).scrollTop() > 100) {
+						$('#top').fadeIn();
+					} else {
+						$('#top').fadeOut();
+					}
+				});
+				
+				$('#top').click(function(){
+					$('html, body').animate({scrollTop : 0},800);
+					return false;
+				});
+			});
+			$(document).ready(function() {
+				var langStored = localStorage.getItem("language");
+				if(langStored=='french'){
+					$('[lang="en"]').hide();
+			  		$('[lang="fr"]').show();
+				}
+				else if(langStored=='english') {
+					$('[lang="fr"]').hide();
+			  		$(langStored).show();
+				}
+				else if(langStored==null) {
+					$('[lang="en"]').hide();
+			  		$('[lang="fr"]').show();					
+				}
+				$('#switch_fr').click(function() {
+					$('[lang="fr"]').show();
+					$('[lang="en"]').hide();
+					var selectedLanguage='french';
+					localStorage.setItem("language", selectedLanguage); 
+				});
+				$('#switch_en').click(function() {
+					$('[lang="en"]').show();
+					$('[lang="fr"]').hide();
+					var selectedLanguage='english';
+					localStorage.setItem("language", selectedLanguage); 
+				});
+			});
+	             </script>
+	</head>
+	<body>
+		<header></header>
+		<div id="container">
+			<div id="navbar">
+				<div id="menu">Menu</div>
+				<div lang="fr" id="name"> <span> Math'rix P.7 × à propos</span></div>
+				<div lang="en" id="name"> <span> Math'rix P.7 × about us</span></div>
+				<div id="language">
+					<button class="switch" id="switch_en">EN.</button>
+					<button class="switch" id="switch_fr">FR.</button>
+				</div>
+			</div>
+			<div id="banner">
+				<div id="sidebar">
+					<a href="index.html"><li lang="fr">Page d'accueil</li></a>
+					<a href=""><li lang="fr">Catégories</li></a>
+					<a href="#creator"><li lang="fr">Projets</li></a>
+					<a href=""><li lang="fr">Documents</li></a>
+					<a href="index.html"><li lang="en">Home page</li></a>
+					<a href=""><li lang="en">Categories</li></a>
+					<a href=""><li lang="en">Projects</li></a>
+					<a href=""><li lang="en">Documents</li></a>
+					
+				</div>
+				<div id="main">
+					<div lang="fr" class="date" id="date"></div>
+					<div lang="en" class="date" id="date2"></div>
+					<div id="message">	
+						<p lang="fr" class="maintitle">Découvrez les coulisses</p>
+						<p lang="en" class="maintitle">Discover the scenes</p>
+						<p lang="fr" class="subtitle">de l'association Math'rix P7<i class="dot">.</i></p>
+						<p lang="en" class="subtitle">of the association Math'rix P7<i class="dot">.</i></p>
+					</div>
+				</div>
+			</div>
+			<div id="subbar">
+				<span class="main_cat">Membres actifs: <strong>19</strong></span>
+				<span>Adhérents: <strong>97</strong></span>
+				<span>mail: <strong><a href="mailto:mathrix.paris7@gmail.com">mathrix.paris7@gmail.com</a></strong></span>
+				<span>facebook: <strong><a href="https://www.facebook.com/mathrixp7/">facebook.com/mathrixp7/</a></strong></span>
+				<span>twitter: <strong><a href="https://twitter.com/MathRixP7">twitter.com/MathRixP7</a></strong>
+			</div>
+			<div id="content">
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Portrait de l'association <i class="italic">Math'rix P7</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>S’investir dans une association c’est un bon moyen de rencontrer d’autres étudiant.e.s de Paris Diderot, mais aussi de vivre une belle expérience à valoriser sur son CV. À l’université, de nombreuses associations existent. Découvrez Math'Rix, <strong>l'association des filières mathématiciennes.</strong></p>
+
+						<p>Depuis 3 ans, Math’Rix P7 est l’association dédiée aux étudiant.e.s des filières <strong>Mathématiques, MIASHS et Math-Info de Paris Diderot</strong>. Elle a pour but de créer un esprit de cohésion entre les étudiant.e.s en maths, mais également ceux d’autres filières de l’université. Pour cela, elle propose des projets scolaires, culturels et événementiels.</p>
+
+						<p>« <i>Depuis sa création, l’association Math’Rix, organisait peu d’événements et n’essayait pas d’en créer des nouveaux. Cette année, nous avons donc décidé de <strong>reprendre l’association à zéro et lui donner une nouvelle identité</strong>. Nous avons envie d’organiser de nombreux projets pour les étudiants en maths et d’autres filières. L'université n'est pas seulement un lieu d'étude, c'est également un lieu de culture et d'échange. </i>» déclare Flore Caye, secrétaire de l’association en 2016.</p>
+
+						<h2 class="sub_subject">Qui sont-ils ?</h2>
+
+						<p>Cette année, Math’Rix P7 est présidée par <strong>Roxane PHOTINODELLIS</strong>. Elle est accompagnée dans le bureau central par une vice-présidente générale, un secrétaire, un trésorier, une trésorière adjointe et par 14 autres étudiant.e.s qui se réunissent en 5 pôles : le pôle communication, le pôle culture, le pôle événementiel, le pôle scolaire et le pôle design.</p>
+
+						<h2 class="sub_subject">Comment rejoindre l'association ?</h2>
+
+						<p>Pour rejoindre l’association en tant qu’adhérent, rien de plus simple ! Il vous suffit de faire partie d’une filière mathématique, de prendre contact avec les membres et de payer 5€. Pour prendre contact, vous pouvez rencontrer les membres de l’asso dans le bureau 1019 de Sophie Germain ou envoyer un mail. </p>
+					</div>
+				</div>
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Le Bureau <i class="italic">Central</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>Le bureau central est chargé de trois fonctions, chacune portée par un.e titulaire
+						assisté.e ou non d’adjoint.e.s :</p>
+
+						<p>I. la présidence est portée par le-la président.e de l’association et ses
+						adjoint.e.s sont appelé.e.s vice-président.e.s; <strong>elle représente l’association
+						dans tous les actes de la vie civile</strong>, supervise les tâches de l'équipe
+						dirigeante, veille à la bonne marche de l’association et à l'application des
+						décisions, des statuts et du règlement intérieur le cas échéant avec l’aide du
+						secrétariat, et peut agir en justice au nom de l'association avec la permission
+						du conseil d’administration;</p>
+
+						<p>II. le secrétariat est porté par le ou la secrétaire de l’association ; <strong>il est la
+						mémoire de l’association</strong>, constitue et conserve les archives de l’association,
+						fait appliquer les statuts de l’association avec l'aide de le/la président.e et est
+						responsable des actes juridiques de l’association;</p>
+
+						<p>III. la trésorerie est porté par le ou la trésorier.e de l’association; <strong>elle est
+						responsable des ressources et des comptes de l’association</strong>, établi le budget
+						prévisionnel, assure la tenue des livres de comptes (dépenses-recettes). Les
+						relations entre l’association et la banque et les relations éventuelles avec la
+						trésorerie des fédérations à auxquelles l’association est adhérente ou peut
+						adhérer.</p>
+
+						<p>Le bureau central est actuellement composé de <strong>5 membres</strong> : une présidente, une vice-présidente, un secrétaire, un tréorier et une trésorière adjointe.</p>
+					</div>
+					<div class="members">
+						<div class="profil">
+							<img src="avatar/avatar_roxane.png" class="avatar"></img>
+							<p class="identity">Roxane Photinodellis</p>
+							<p class="post">Présidente </p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_flora.png" class="avatar"></img>
+							<p class="identity">Flora Magnifico</p>
+							<p class="post">Vice-présidente</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_benjamin02.png" class="avatar"></img>
+							<p class="identity">Benjamin Dang</p>
+							<p class="post">Secrétaire</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_clement.png" class="avatar"></img>
+							<p class="identity">Clément Broggia</p>
+							<p class="post">Trésorier</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_merlène.png" class="avatar"></img>
+							<p class="identity">Merlène Lejeune</p>
+							<p class="post">Trésorière adjointe</p>
+						</div>
+					</div>
+				</div>
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Le Pôle <i class="italic">Communication</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>Le pôle communication a pour mission d'augmenter l'influence des mathématiques à l'université Paris Diderot mais également à l'extérieur pour une
+						année. Il est actuellement composé de <strong>2 membres</strong> : un responsable du pôle communication acommpagné d'une chargée.</p>
+					</div>
+					<div class="members">
+						<div class="profil">
+							<img src="avatar/avatar_association.png" class="avatar"></img>
+							<p class="identity">Louis Blais</p>
+							<p class="post">Responsable</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_ambre.png" class="avatar"></img>
+							<p class="identity">Ambre Auguet</p>
+							<p class="post">Chargée</p>
+						</div>
+					</div>
+				</div>
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Le Pôle <i class="italic">Culture</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>Le pôle culture a pour mission de créer des événements culturels et de
+						dynamiser les activités musicales et cinématographiques pendant un an. Il est actuellement composé de <strong>3 membres</strong> : un responsable du pôle culture accompagné de deux chargés.</p>
+					</div>
+					<div class="members">
+						<div class="profil">
+							<img src="avatar/avatar_michael.png" class="avatar"></img>
+							<p class="identity">Michael Hajage</p>
+							<p class="post">Responsable</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_association.png" class="avatar"></img>
+							<p class="identity">Olivier Martinot</p>
+							<p class="post">Chargé</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_roman.png" class="avatar"></img>
+							<p class="identity">Roman Pesce</p>
+							<p class="post">Chargé</p>
+						</div>
+					</div>
+				</div>
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Le Pôle <i class="italic">Evénementiel</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>Le pôle événementiel a pour mission d'unifier les étudiants de mathémati-
+						ques et d'atteindre le plus de monde possible pour une année, cela passe par
+						des tournois, soirées, afterwork  Il est actuellement composé de <strong>4 membres</strong> : un responsable du pôle événementiel accompagné de trois chargés.</p>
+					</div>
+					<div class="members">
+						<div class="profil">
+							<img src="avatar/avatar_alex.png" class="avatar"></img>
+							<p class="identity">Alex Shirlaw</p>
+							<p class="post">Responsable</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_yanis.png" class="avatar"></img>
+							<p class="identity">Yanis Belkheyar</p>
+							<p class="post">Chargé</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_flore.png" class="avatar"></img>
+							<p class="identity">Flore Caye</p>
+							<p class="post">Chargée</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_alexandre.png" class="avatar"></img>
+							<p class="identity">Alexandre Khedir</p>
+							<p class="post">Chargé</p>
+						</div>
+					</div>
+				</div>
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Le Pôle <i class="italic">Scolaire</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>Le pôle scolaire a pour mission d'accompagner les étudiants de licence vers
+						les services compétents, les informer lorsqu'ils ont des questions, organiser
+						des projets pour les aider à réussir dans leurs études, aider les étudiants
+						étrangers à s'intégrer au sein de l'université. Il est actuellement composé de <strong>2 membres</strong> : un responsable du pôle scolaire accompagné d'un chargé.</p>
+					</div>
+					<div class="members">
+						<div class="profil">
+							<img src="avatar/avatar_diako.png" class="avatar"></img>
+							<p class="identity">Diako Niakate</p>
+							<p class="post">Responsable</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_cédric.png" class="avatar"></img>
+							<p class="identity">Cédric Cheng</p>
+							<p class="post">Chargé</p>
+						</div>
+					</div>
+				</div>
+				<div class="article">
+					<div class="title">
+						<h3  class="subject">Le Pôle <i class="italic">Design</i><i class="dot">.</i></h3>
+					</div>
+					<div class="description">
+						<p>Le pôle design a pour mission de fournir et créer durant une année des
+						supports graphiques aux autres pôles de l'association dans le but de rendre
+						les événements et actions de l'association plus visibles et donc facilement
+						accessibles. Il est actuellement composé de <strong>3 membres</strong> : un responsable du pôle design accompagné de deux chargés.</p>
+					</div>
+					<div class="members">
+						<div class="profil">
+							<img src="avatar/avatar_xavier.png" class="avatar"></img>
+							<p class="identity">Xavier Durand</p>
+							<p class="post">Responsable</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_rebecca.png" class="avatar"></img>
+							<p class="identity">Rébecca Avrane</p>
+							<p class="post">Chargée</p>
+						</div>
+						<div class="profil">
+							<img src="avatar/avatar_sofiane.png" class="avatar"></img>
+							<p class="identity">Sofiane Terraf</p>
+							<p class="post">Chargé</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button onclick="topFunction()" id="top" title="Go to top">
+			<span lang="en">Top</span>
+			<span lang="fr">Haut</span>
+		</button>
+		<footer></footer>
+	</body>
+</html>
